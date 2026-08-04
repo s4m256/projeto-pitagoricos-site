@@ -13,7 +13,7 @@ test("renders the finished Pitagóricos homepage", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /Projeto Pitagóricos/);
-  assert.match(html, /Talento está em todo lugar/);
+  assert.match(html, /Prepare-se para a sua próxima/);
   assert.match(html, /Quero estudar/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/);
   assert.match(html, /lang="pt-BR"/);

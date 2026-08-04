@@ -158,8 +158,8 @@ export const departments: Department[] = [
 export const timeline = [
   { year: "2022", title: "O projeto nasce", description: "Uma rede estudantil criada para democratizar a preparação olímpica." },
   { year: "2023", title: "Alcance nacional", description: "Comunidades e treinamentos passam a alcançar estudantes dos 27 estados." },
-  { year: "2024", title: "Parceria com o Inesp", description: "Questões comentadas ganha edição e distribuição de alto padrão no Ceará." },
-  { year: "Agora", title: "Próxima órbita", description: "Núcleos presenciais, formação em redes públicas e uma plataforma própria no horizonte." },
+  { year: "2024", title: "Parceria com o Inesp", description: "Publicação e distribuição do e-book Questões Comentadas no Ceará." },
+  { year: "Agora", title: "Próximos passos", description: "Planejamento de núcleos presenciais, formação em redes públicas e uma plataforma própria." },
 ];
 
 export const universities = [

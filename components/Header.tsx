@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { assetUrl } from "@/lib/assets";
 import { navigation } from "@/lib/content";
 
 export function Header() {
@@ -8,8 +9,8 @@ export function Header() {
       <a className="skip-link" href="#conteudo">Pular para o conteúdo</a>
       <div className="shell header-inner">
         <Link className="brand" href="/" aria-label="Projeto Pitagóricos - início">
-          <Image src="/logo-pitagoricos.png" width={54} height={54} alt="" priority />
-          <span><strong>Pitagóricos</strong><small>Ciência ao alcance de todos</small></span>
+          <Image src={assetUrl("/logo-rocket.png")} width={60} height={60} alt="" priority />
+          <span><strong>Pitagóricos</strong><small>Olimpíadas científicas</small></span>
         </Link>
         <nav className="desktop-nav" aria-label="Navegação principal">
           {navigation.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
