@@ -32,12 +32,10 @@ export const siteConfig = {
 };
 
 export const navigation = [
-  { href: "/estude", label: "Estude" },
+  { href: "/", label: "Início" },
   { href: "/materiais", label: "Materiais" },
-  { href: "/impacto", label: "Impacto" },
-  { href: "/parceiros", label: "Escolas e parceiros" },
-  { href: "/sobre", label: "Sobre e equipe" },
-  { href: "/novidades", label: "Novidades" },
+  { href: "/novidades", label: "Notícias" },
+  { href: "/area-do-aluno", label: "Área do aluno" },
 ];
 
 export const metrics: Metric[] = [

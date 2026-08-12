@@ -14,13 +14,13 @@ test("renders the finished Pitagóricos homepage", async () => {
   const html = await response.text();
   assert.match(html, /Projeto Pitagóricos/);
   assert.match(html, /Prepare-se para a sua próxima/);
-  assert.match(html, /Quero estudar/);
+  assert.match(html, /Meu progresso/);
   assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/);
   assert.match(html, /lang="pt-BR"/);
 });
 
 test("renders core public routes", async () => {
-  for (const pathname of ["/estude", "/materiais", "/impacto", "/parceiros", "/sobre", "/novidades", "/privacidade"]) {
+  for (const pathname of ["/estude", "/materiais", "/impacto", "/parceiros", "/sobre", "/novidades", "/area-do-aluno", "/privacidade"]) {
     const response = await render(pathname);
     assert.equal(response.status, 200, pathname);
     const html = await response.text();
