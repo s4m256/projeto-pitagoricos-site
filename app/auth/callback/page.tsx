@@ -1,0 +1,7 @@
+"use client";
+import { Suspense, useEffect, useState } from "react";
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import { getSupabaseBrowserClient } from "@/lib/supabase";
+function Callback() { const params = useSearchParams(); const [error, setError] = useState(() => getSupabaseBrowserClient() ? "" : "Supabase não configurado."); useEffect(() => { const client = getSupabaseBrowserClient(); const redirect = params.get("redirect")?.startsWith("/") ? params.get("redirect")! : "/area-do-aluno"; const code = params.get("code"); if (!client) return; (async () => { if (code) { const { error: exchangeError } = await client.auth.exchangeCodeForSession(code); if (exchangeError) return setError(exchangeError.message); } const { data } = await client.auth.getSession(); if (data.session) window.location.replace(redirect === "/recuperar-senha" ? "/recuperar-senha?mode=update" : redirect); else setError("Não foi possível confirmar a sessão. Tente entrar novamente."); })(); }, [params]); return error ? <div className="state-card error-state"><h1>Não foi possível entrar</h1><p>{error}</p><Link className="button button-yellow" href="/entrar">Voltar para entrar</Link></div> : <p className="loading-state">Confirmando sua conta…</p>; }
+export default function AuthCallbackPage() { return <main id="conteudo" className="auth-page"><section className="shell"><Suspense fallback={<p>Confirmando…</p>}><Callback /></Suspense></section></main>; }

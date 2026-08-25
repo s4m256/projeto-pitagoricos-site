@@ -11,15 +11,17 @@
     "start": "next start",
     "build:sites": "vinext build",
     "start:sites": "vinext start",
-    "test": "npm run build:sites && node --test tests/rendered-html.test.mjs",
+    "test": "npm run test:unit && npm run build:sites && node --test tests/rendered-html.test.mjs",
+    "test:unit": "tsx --test tests/unit.test.ts",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
     "studio:dev": "npm --prefix studio run dev",
     "studio:build": "npm --prefix studio run build"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
     "drizzle-orm": "0.45.2",
-    "next": "16.2.6",
+    "next": "^16.3.3",
     "react": "19.2.6",
     "react-dom": "19.2.6"
   },
@@ -36,6 +38,7 @@
     "eslint-config-next": "16.2.6",
     "react-server-dom-webpack": "19.2.6",
     "tailwindcss": "4.2.1",
+    "tsx": "^4.22.1",
     "typescript": "5.9.3",
     "vinext": "0.0.50",
     "vite": "8.0.13",
