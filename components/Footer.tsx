@@ -9,7 +9,7 @@ export function Footer() {
     <footer className="site-footer">
       <div className="shell footer-grid">
         <div className="footer-brand">
-          <Image src={assetUrl("/logo-rocket.png")} width={72} height={72} alt="Símbolo do Projeto Pitagóricos" />
+          <Image src={assetUrl("/logo-rocket.png")} width={552} height={1016} alt="Símbolo do Projeto Pitagóricos" />
           <div><strong>Projeto Pitagóricos</strong><p>Preparação gratuita para olimpíadas científicas, feita por estudantes.</p></div>
         </div>
         <div><h2>Explore</h2>{navigation.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</div>
