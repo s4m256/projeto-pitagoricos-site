@@ -1,29 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-
-async function render(pathname = "/") {
-  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
-  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`);
-  const { default: worker } = await import(workerUrl.href);
-  return worker.fetch(new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
-}
-
-test("renders the finished Pitagóricos homepage", async () => {
-  const response = await render();
-  assert.equal(response.status, 200);
-  const html = await response.text();
-  assert.match(html, /Projeto Pitagóricos/);
-  assert.match(html, /Prepare-se para a sua próxima/);
-  assert.match(html, /Meu progresso/);
-  assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/);
-  assert.match(html, /lang="pt-BR"/);
-});
-
-test("renders core public routes", async () => {
-  for (const pathname of ["/estude", "/materiais", "/impacto", "/parceiros", "/sobre", "/novidades", "/area-do-aluno", "/privacidade"]) {
-    const response = await render(pathname);
-    assert.equal(response.status, 200, pathname);
-    const html = await response.text();
-    assert.match(html, /Projeto Pitagóricos/, pathname);
-  }
-});
+async function render(pathname = "/") { const workerUrl = new URL("../dist/server/index.js", import.meta.url); workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-${pathname}`); const { default: worker } = await import(workerUrl.href); return worker.fetch(new Request(`http://localhost${pathname}`, { headers: { accept: "text/html" } }), { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} }); }
+test("home tem a nova jornada pública e navegação", async () => { const response = await render(); assert.equal(response.status, 200); const html = await response.text(); assert.match(html, /Não sei por onde começar/); assert.match(html, /Comece aqui/); assert.match(html, />Entrar</); assert.doesNotMatch(html, /Meu progresso/); assert.doesNotMatch(html, /pitagoricos\.org\.br/); assert.doesNotMatch(html, /codex-preview|Building your site|react-loading-skeleton/); assert.match(html, /lang="pt-BR"/); });
+test("renderiza todas as rotas públicas esperadas", async () => { for (const pathname of ["/", "/comece", "/olimpiadas", "/olimpiadas/oba", "/olimpiadas/obmep", "/olimpiadas/onc", "/materiais", "/entrar", "/cadastro", "/recuperar-senha", "/auth/callback", "/sobre"]) { const response = await render(pathname); assert.equal(response.status, 200, pathname); const html = await response.text(); assert.match(html, /Projeto Pitagóricos|Pitagóricos/, pathname); } });
+test("rota legada /estude permanece funcional", async () => { const response = await render("/estude"); assert.equal(response.status, 200); assert.match(await response.text(), /mesma experiência de Comece aqui/); });
