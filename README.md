@@ -59,6 +59,7 @@ npm run build
 ## Bloqueios de lançamento
 
 - **BLOQUEIO DE LANÇAMENTO: confirmar que todo arquivo do Google Drive publicado está em anyone-with-link VIEWER, nunca WRITER.**
-- Os dois PNGs da nova marca não estavam disponíveis nos anexos recebidos durante esta implementação. Consulte `docs/brand-assets.md` antes de lançar.
+
+Os dois PNGs oficiais da marca já estão integrados e documentados em `docs/brand-assets.md`.
 
 Não há deploy automático desta branch. O workflow existente só publica após merge/push em `main` e não deve ser acionado durante a revisão da PR.

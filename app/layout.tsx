@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   title: { default: "Projeto Pitagóricos", template: "%s | Projeto Pitagóricos" },
   description: "Formação gratuita para olimpíadas científicas, feita de estudantes para estudantes.",
   icons: { icon: assetUrl("/favicon.svg") },
-  openGraph: { title: "Projeto Pitagóricos", description: "Preparação gratuita para olimpíadas científicas, feita por estudantes.", type: "website", locale: "pt_BR", images: [{ url: "/og.png", width: 1728, height: 909, alt: "Projeto Pitagóricos" }] },
-  twitter: { card: "summary_large_image", title: "Projeto Pitagóricos", description: "Preparação gratuita para olimpíadas científicas.", images: ["/og.png"] },
+  openGraph: { title: "Projeto Pitagóricos", description: "Preparação gratuita para olimpíadas científicas, feita por estudantes.", type: "website", locale: "pt_BR", images: [{ url: "/brand/pitagoricos-white-on-dark-original.png", width: 1254, height: 1254, alt: "Projeto Pitagóricos" }] },
+  twitter: { card: "summary", title: "Projeto Pitagóricos", description: "Preparação gratuita para olimpíadas científicas.", images: ["/brand/pitagoricos-white-on-dark-original.png"] },
 };
 
 export const viewport: Viewport = { themeColor: "#071d40", colorScheme: "dark" };

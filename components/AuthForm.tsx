@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 import { getSiteUrl, getSupabaseBrowserClient } from "@/lib/supabase";
+import { BrandLogo } from "./BrandLogo";
 
 export function AuthForm({ mode }: { mode: "login" | "signup" | "recovery" }) {
   const params = useSearchParams();
@@ -27,6 +28,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" | "recovery" }) {
     if (error) { setMessage(error.message); setBusy(false); }
   }
   return <div className="auth-card">
+    <BrandLogo variant="blue-on-light" className="auth-brand-logo" />
     {mode !== "recovery" && <button className="button button-google" type="button" onClick={google} disabled={busy}>Continuar com Google</button>}
     {mode !== "recovery" && <div className="auth-divider"><span>ou</span></div>}
     <form onSubmit={submit} className="form-stack">

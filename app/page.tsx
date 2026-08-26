@@ -1,5 +1,54 @@
-import Image from "next/image"; import Link from "next/link"; import type { Metadata } from "next";
-import { assetUrl } from "@/lib/assets"; import { metrics } from "@/lib/content";
-export const metadata: Metadata = { title: "Olimpíadas científicas", description: "Descubra OBA, OBMEP e ONC e estude com materiais gratuitos.", alternates: { canonical: "/" } };
-const olympiads = [{ slug: "oba", name: "OBA", subject: "Espaço e astronomia", text: "Aprenda por temas, pratique e avance até simulados." }, { slug: "obmep", name: "OBMEP", subject: "Matemática e problemas", text: "Treine raciocínio, estratégia e soluções escritas." }, { slug: "onc", name: "ONC", subject: "Ciências em conjunto", text: "Descubra seu nível e siga um guia interdisciplinar." }];
-export default function Home() { return <main id="conteudo"><section className="home-hero"><div className="hero-grid-pattern" aria-hidden="true"/><div className="shell home-hero-grid"><div className="hero-copy"><p className="eyebrow light"><span/> Estudo gratuito para olimpíadas científicas</p><h1>Seu próximo desafio começa com um caminho <em>claro.</em></h1><p className="hero-lede">Se você ainda não sabe por onde começar, descubra uma olimpíada. Se já sabe, vá direto para OBA, OBMEP ou ONC.</p><div className="hero-actions"><Link className="button button-yellow" href="/comece">Não sei por onde começar</Link><Link className="button button-outline-light" href="/olimpiadas">Já sei qual olimpíada quero</Link></div><p className="hero-footnote">Sem login para descobrir e estudar materiais públicos.</p></div><div className="hero-visual" aria-label="Projeto Pitagóricos"><div className="logo-core"><div className="logo-glow"/><Image src={assetUrl("/logo-rocket.png")} width={520} height={520} alt="Foguete, símbolo atual do Projeto Pitagóricos" priority/></div><p className="home-logo-caption">De alunos para alunos, desde 2022.</p></div></div></section><section className="impact-strip"><div className="shell impact-strip-grid">{metrics.slice(0,3).map((m) => <div key={m.label}><strong>{m.value}</strong><span>{m.label}</span></div>)}</div></section><section className="section"><div className="shell"><div className="section-heading"><p className="eyebrow">Escolha orientada</p><h2>Três portas de entrada.</h2><p>Cada olimpíada tem uma página própria com nível, forma de estudo e acesso aos materiais publicados.</p></div><div className="olympiad-grid">{olympiads.map((item) => <article key={item.slug}><span className="olympiad-abbr">{item.name}</span><h2>{item.subject}</h2><p>{item.text}</p><Link className="text-link" href={`/olimpiadas/${item.slug}`}>Conhecer {item.name} <span aria-hidden="true">→</span></Link></article>)}</div></div></section><section className="final-cta"><div className="shell final-cta-inner"><div><p className="eyebrow light">Biblioteca</p><h2>Materiais públicos, organizados por matéria.</h2></div><div><Link className="button button-yellow" href="/materiais">Explorar materiais</Link><Link className="button button-outline-light" href="/area-do-aluno">Continuar estudando</Link></div></div></section></main>; }
+import type { Metadata } from "next";
+import Link from "next/link";
+import { BrandLogo } from "@/components/BrandLogo";
+import { metrics } from "@/lib/content";
+
+export const metadata: Metadata = {
+  title: "Olimpíadas científicas",
+  description: "Descubra OBA, OBMEP e ONC e estude com materiais gratuitos.",
+  alternates: { canonical: "/" },
+};
+
+const olympiads = [
+  { slug: "oba", name: "OBA", subject: "Espaço e astronomia", text: "Aprenda por temas, pratique e avance até simulados." },
+  { slug: "obmep", name: "OBMEP", subject: "Matemática e problemas", text: "Treine raciocínio, estratégia e soluções escritas." },
+  { slug: "onc", name: "ONC", subject: "Ciências em conjunto", text: "Descubra seu nível e siga um guia interdisciplinar." },
+];
+
+export default function Home() {
+  return (
+    <main id="conteudo">
+      <section className="home-hero">
+        <div className="hero-grid-pattern" aria-hidden="true" />
+        <div className="shell home-hero-grid">
+          <div className="hero-copy">
+            <p className="eyebrow light"><span /> Estudo gratuito para olimpíadas científicas</p>
+            <h1>Seu próximo desafio começa com um caminho <em>claro.</em></h1>
+            <p className="hero-lede">Se você ainda não sabe por onde começar, descubra uma olimpíada. Se já sabe, vá direto para OBA, OBMEP ou ONC.</p>
+            <div className="hero-actions">
+              <Link className="button button-yellow" href="/comece">Não sei por onde começar</Link>
+              <Link className="button button-outline-light" href="/olimpiadas">Já sei qual olimpíada quero</Link>
+            </div>
+            <p className="hero-footnote">Sem login para descobrir e estudar materiais públicos.</p>
+          </div>
+          <div className="hero-visual" aria-label="Projeto Pitagóricos">
+            <div className="logo-core"><div className="logo-glow" /><BrandLogo variant="white-on-dark" className="hero-brand-logo" priority /></div>
+            <p className="home-logo-caption">De alunos para alunos, desde 2022.</p>
+          </div>
+        </div>
+      </section>
+      <section className="impact-strip">
+        <div className="shell impact-strip-grid">{metrics.slice(0, 3).map((metric) => <div key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></div>)}</div>
+      </section>
+      <section className="section">
+        <div className="shell">
+          <div className="section-heading"><p className="eyebrow">Escolha orientada</p><h2>Três portas de entrada.</h2><p>Cada olimpíada tem uma página própria com nível, forma de estudo e acesso aos materiais publicados.</p></div>
+          <div className="olympiad-grid">{olympiads.map((item) => <article key={item.slug}><span className="olympiad-abbr">{item.name}</span><h2>{item.subject}</h2><p>{item.text}</p><Link className="text-link" href={`/olimpiadas/${item.slug}`}>Conhecer {item.name} <span aria-hidden="true">→</span></Link></article>)}</div>
+        </div>
+      </section>
+      <section className="final-cta">
+        <div className="shell final-cta-inner"><div><p className="eyebrow light">Biblioteca</p><h2>Materiais públicos, organizados por matéria.</h2></div><div><Link className="button button-yellow" href="/materiais">Explorar materiais</Link><Link className="button button-outline-light" href="/area-do-aluno">Continuar estudando</Link></div></div>
+      </section>
+    </main>
+  );
+}

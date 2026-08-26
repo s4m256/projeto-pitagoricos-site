@@ -1,7 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
-import { assetUrl } from "@/lib/assets";
 import { navigation, siteConfig } from "@/lib/content";
+import { BrandLogo } from "./BrandLogo";
 import { ExternalLink } from "./ExternalLink";
 
 export function Footer() {
@@ -9,8 +8,8 @@ export function Footer() {
     <footer className="site-footer">
       <div className="shell footer-grid">
         <div className="footer-brand">
-          <Image src={assetUrl("/logo-rocket.png")} width={552} height={1016} alt="Símbolo do Projeto Pitagóricos" />
-          <div><strong>Projeto Pitagóricos</strong><p>Preparação gratuita para olimpíadas científicas, feita por estudantes.</p></div>
+          <BrandLogo variant="white-on-dark" className="footer-brand-logo" />
+          <p>Preparação gratuita para olimpíadas científicas, feita por estudantes.</p>
         </div>
         <div><h2>Explore</h2>{navigation.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}</div>
         <div><h2>Projeto</h2><Link href="/estude">Como estudar</Link><Link href="/impacto">Impacto</Link><Link href="/sobre">Sobre e equipe</Link><Link href="/parceiros">Escolas e parceiros</Link><Link href="/privacidade">Privacidade</Link></div>
