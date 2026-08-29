@@ -15,3 +15,12 @@ test("preserva os dois PNGs oficiais da marca sem alteração", () => {
   assert.equal(hash("public/brand/pitagoricos-blue-on-light-original.png"), "141C60A080E99248CD9403FCFD8E667036199D83282D610D73FA4BF991157C49");
   assert.equal(hash("public/brand/pitagoricos-white-on-dark-original.png"), "7CDB96745EA6E9111A648BC97D2088087D0F1C126D2A91644E0F526E956D323F");
 });
+
+test("usa o derivado transparente validado da marca branca", () => {
+  const digest = createHash("sha256")
+    .update(readFileSync("public/brand/pitagoricos-white-transparent.png"))
+    .digest("hex")
+    .toUpperCase();
+
+  assert.equal(digest, "BD099CC5062C53565F686D59E29BA66E9A9383C4C64D5E0150E68B4C8E45EAFB");
+});

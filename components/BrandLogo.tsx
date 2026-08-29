@@ -9,7 +9,7 @@ type BrandLogoProps = {
 
 const logos = {
   "blue-on-light": "/brand/pitagoricos-blue-on-light-original.png",
-  "white-on-dark": "/brand/pitagoricos-white-on-dark-original.png",
+  "white-on-dark": "/brand/pitagoricos-white-transparent.png",
 } as const;
 
 export function BrandLogo({ variant, className = "", priority = false }: BrandLogoProps) {
