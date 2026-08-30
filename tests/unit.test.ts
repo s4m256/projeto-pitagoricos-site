@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import test from "node:test";
+import { AuthTimeoutError, getAuthErrorMessage, withAuthTimeout } from "../lib/auth-helpers";
 import { getOlympiadLevel, LEVEL_MAPPING_YEAR } from "../lib/olympiad-levels";
 import { recommend, recommendForVisitor } from "../lib/recommendations";
 import type { Material } from "../lib/database.types";
@@ -23,4 +24,16 @@ test("usa o derivado transparente validado da marca branca", () => {
     .toUpperCase();
 
   assert.equal(digest, "BD099CC5062C53565F686D59E29BA66E9A9383C4C64D5E0150E68B4C8E45EAFB");
+});
+
+test("timeout de autenticação rejeita chamadas penduradas", async () => {
+  await assert.rejects(
+    withAuthTimeout(new Promise(() => undefined), 10),
+    (error) => error instanceof AuthTimeoutError,
+  );
+});
+
+test("erros de autenticação são apresentados em português", () => {
+  assert.equal(getAuthErrorMessage(new Error("Invalid login credentials")), "Email ou senha incorretos.");
+  assert.match(getAuthErrorMessage(new Error("Failed to fetch")), /conectar ao serviço/i);
 });
