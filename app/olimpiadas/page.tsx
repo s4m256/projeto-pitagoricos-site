@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { PageHero } from "@/components/PageHero";
+export const metadata: Metadata = { title: "Olimpíadas", description: "Conheça OBA, OBMEP e ONC e escolha uma preparação.", alternates: { canonical: "/olimpiadas" } };
+const items = [{ slug: "oba", name: "OBA", area: "Astronomia e astronáutica", text: "Aprenda por temas, pratique e avance até os simulados." }, { slug: "obmep", name: "OBMEP", area: "Matemática e problemas", text: "Treine estratégias e escrita de soluções, com foco atual na segunda fase." }, { slug: "onc", name: "ONC", area: "Ciências", text: "Descubra seu nível e organize uma preparação interdisciplinar." }];
+export default function OlympiadsPage() { return <main id="conteudo"><PageHero eyebrow="Escolha seu desafio" title="Três olimpíadas, caminhos diferentes." description="Cada página explica o nível, o formato de preparação e como dar o próximo passo."/><section className="section"><div className="shell olympiad-grid">{items.map((item) => <article key={item.slug}><span className="olympiad-abbr">{item.name}</span><h2>{item.area}</h2><p>{item.text}</p><Link className="button button-yellow" href={`/olimpiadas/${item.slug}`}>Conhecer {item.name}</Link></article>)}</div></section></main>; }

@@ -1,4 +1,4 @@
-import { departments, materials, metrics, posts, type Department, type Material, type Member, type Metric, type Post } from "./content";
+import { departments, metrics, posts, type Department, type Member, type Metric, type Post } from "./content";
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID;
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || "production";
@@ -15,10 +15,6 @@ async function sanityQuery<T>(query: string, fallback: T): Promise<T> {
   } catch {
     return fallback;
   }
-}
-
-export function getMaterials() {
-  return sanityQuery<Material[]>(`*[_type == "material"] | order(featured desc, title asc){"id": _id,title,description,area,olympiad,level,type,href,featured}`, materials);
 }
 
 export function getMetrics() {
