@@ -1,0 +1,7 @@
+"use client";
+import { Suspense, useState } from "react";
+import { AuthForm } from "@/components/AuthForm";
+import { getSupabaseBrowserClient } from "@/lib/supabase";
+import { useSearchParams } from "next/navigation";
+function RecoveryContent() { const params = useSearchParams(); const [password, setPassword] = useState(""); const [message, setMessage] = useState(""); const hasRecovery = params.get("mode") === "update" || (typeof window !== "undefined" && window.location.hash.includes("type=recovery")); async function update(e: React.FormEvent) { e.preventDefault(); const client = getSupabaseBrowserClient(); if (!client) return setMessage("Supabase não configurado."); const { error } = await client.auth.updateUser({ password }); setMessage(error?.message ?? "Senha atualizada. Você já pode entrar."); } return hasRecovery ? <form className="auth-card form-stack" onSubmit={update}><h1>Defina uma nova senha</h1><label>Nova senha<input type="password" minLength={8} required value={password} onChange={(e) => setPassword(e.target.value)} /></label><button className="button button-yellow">Atualizar senha</button>{message && <p role="status">{message}</p>}</form> : <AuthForm mode="recovery" />; }
+export default function RecoveryPage() { return <main id="conteudo" className="auth-page"><section className="shell auth-layout"><div><p className="eyebrow light">Recuperação</p><h1>Recupere o acesso.</h1><p>Enviaremos um link seguro para o email cadastrado.</p></div><Suspense fallback={<p>Carregando…</p>}><RecoveryContent /></Suspense></section></main>; }

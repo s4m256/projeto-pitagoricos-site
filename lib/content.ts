@@ -1,15 +1,3 @@
-export type Material = {
-  id: string;
-  title: string;
-  description: string;
-  area: string;
-  olympiad: string;
-  level: string;
-  type: string;
-  href?: string;
-  featured?: boolean;
-};
-
 export type Metric = {
   value: string;
   label: string;
@@ -33,9 +21,10 @@ export const siteConfig = {
 
 export const navigation = [
   { href: "/", label: "Início" },
+  { href: "/comece", label: "Comece aqui" },
+  { href: "/olimpiadas", label: "Olimpíadas" },
   { href: "/materiais", label: "Materiais" },
-  { href: "/novidades", label: "Notícias" },
-  { href: "/area-do-aluno", label: "Área do aluno" },
+  { href: "/sobre", label: "Sobre" },
 ];
 
 export const metrics: Metric[] = [
@@ -81,66 +70,6 @@ export const olympiads = [
   { abbr: "Canguru", name: "Matemática sem Fronteiras", area: "Matemática" },
   { abbr: "ONC", name: "Olimpíada Nacional de Ciências", area: "Ciências" },
   { abbr: "INT", name: "Seletivas internacionais", area: "Avançado" },
-];
-
-export const materials: Material[] = [
-  {
-    id: "obf-revisao",
-    title: "Revisão completa para a OBF",
-    description: "Roteiro de preparação com teoria, exercícios e revisão orientada.",
-    area: "Física",
-    olympiad: "OBF",
-    level: "Ensino médio",
-    type: "E-book",
-    featured: true,
-  },
-  {
-    id: "questoes-comentadas",
-    title: "Questões comentadas de olimpíadas científicas",
-    description: "Seleção comentada desenvolvida em parceria com o Inesp.",
-    area: "Multidisciplinar",
-    olympiad: "ONC",
-    level: "Fundamental II e médio",
-    type: "E-book",
-    featured: true,
-  },
-  {
-    id: "oba-trilha",
-    title: "Trilha de astronomia para a OBA",
-    description: "Sequência de estudo para começar e avançar com autonomia.",
-    area: "Astronomia",
-    olympiad: "OBA",
-    level: "Todos os níveis",
-    type: "Trilha",
-    featured: true,
-  },
-  {
-    id: "obmep-simulado",
-    title: "Simulado de matemática olímpica",
-    description: "Questões organizadas por dificuldade para testar sua preparação.",
-    area: "Matemática",
-    olympiad: "OBMEP",
-    level: "Fundamental II",
-    type: "Simulado",
-  },
-  {
-    id: "canguru-problemas",
-    title: "Problemas selecionados - Canguru",
-    description: "Problemas de raciocínio com orientação de estudo.",
-    area: "Matemática",
-    olympiad: "Canguru",
-    level: "Todos os níveis",
-    type: "Lista",
-  },
-  {
-    id: "onc-aulas",
-    title: "Aulas intensivas para a ONC",
-    description: "Conteúdo interdisciplinar para a Olimpíada Nacional de Ciências.",
-    area: "Multidisciplinar",
-    olympiad: "ONC",
-    level: "Ensino médio",
-    type: "Aula",
-  },
 ];
 
 export const departments: Department[] = [

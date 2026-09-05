@@ -1,0 +1,10 @@
+project_id = "projeto-pitagoricos"
+[api]
+enabled = true
+[db]
+major_version = 17
+[auth]
+site_url = "https://pitagoricos.com.br"
+additional_redirect_urls = ["http://localhost:3000/auth/callback", "https://pitagoricos.com.br/auth/callback"]
+[storage]
+enabled = true
