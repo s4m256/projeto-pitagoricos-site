@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://pitagoricos.com.br"),
   title: { default: "Projeto Pitagóricos", template: "%s | Projeto Pitagóricos" },
   description: "Formação gratuita para olimpíadas científicas, feita de estudantes para estudantes.",
-  icons: { icon: assetUrl("/favicon.svg") },
+  icons: { icon: assetUrl("/favicon.png") },
   openGraph: { title: "Projeto Pitagóricos", description: "Preparação gratuita para olimpíadas científicas, feita por estudantes.", type: "website", locale: "pt_BR", images: [{ url: "/brand/pitagoricos-white-on-dark-original.png", width: 1254, height: 1254, alt: "Projeto Pitagóricos" }] },
   twitter: { card: "summary", title: "Projeto Pitagóricos", description: "Preparação gratuita para olimpíadas científicas.", images: ["/brand/pitagoricos-white-on-dark-original.png"] },
 };
