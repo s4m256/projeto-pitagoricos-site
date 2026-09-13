@@ -12,10 +12,8 @@ export const siteConfig = {
   name: "Projeto Pitagóricos",
   description:
     "Formação gratuita para olimpíadas científicas, feita de estudantes para estudantes.",
-  whatsappUrl: process.env.NEXT_PUBLIC_WHATSAPP_URL || "",
-  partnerFormUrl: process.env.NEXT_PUBLIC_PARTNER_FORM_URL || "",
-  instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL || "",
-  youtubeUrl: process.env.NEXT_PUBLIC_YOUTUBE_URL || "",
+  instagramUrl: "https://www.instagram.com/pitagoricos/",
+  email: "pitagoricos15@gmail.com",
   plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || "",
 };
 

@@ -33,6 +33,7 @@ jobs:
           NEXT_PUBLIC_SITE_URL: https://pitagoricos.com.br
           NEXT_PUBLIC_SUPABASE_URL: https://nqenthzmmotjbfbdgmxj.supabase.co
           NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
+          NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN: ${{ secrets.NEXT_PUBLIC_CLOUDFLARE_ANALYTICS_TOKEN }}
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
       - name: Preparar arquivos publicados
